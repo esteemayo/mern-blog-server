@@ -1,0 +1,44 @@
+[
+  {
+    "_id": "60f0552c19d5bf76a86ae8bc",
+    "name": "music",
+    "createdAt": "2021-07-15T15:33:00.399Z",
+    "updatedAt": "2021-07-15T15:33:00.399Z"
+  },
+  {
+    "_id": "60f0553219d5bf76a86ae8bf",
+    "name": "movie",
+    "createdAt": "2021-07-15T15:33:06.403Z",
+    "updatedAt": "2021-07-15T15:33:06.403Z"
+  },
+  {
+    "_id": "60f0553919d5bf76a86ae8c2",
+    "name": "technology",
+    "createdAt": "2021-07-15T15:33:13.287Z",
+    "updatedAt": "2021-07-15T15:33:13.287Z"
+  },
+  {
+    "_id": "60f0554419d5bf76a86ae8c5",
+    "name": "programming",
+    "createdAt": "2021-07-15T15:33:24.628Z",
+    "updatedAt": "2021-07-15T15:33:24.628Z"
+  },
+  {
+    "_id": "60f0555419d5bf76a86ae8c8",
+    "name": "science",
+    "createdAt": "2021-07-15T15:33:40.815Z",
+    "updatedAt": "2021-07-15T15:33:40.815Z"
+  },
+  {
+    "_id": "60f0557f19d5bf76a86ae8cb",
+    "name": "sci-fi",
+    "createdAt": "2021-07-15T15:34:23.115Z",
+    "updatedAt": "2021-07-15T15:34:23.115Z"
+  },
+  {
+    "_id": "60f0558a19d5bf76a86ae8ce",
+    "name": "entertainment",
+    "createdAt": "2021-07-15T15:34:34.536Z",
+    "updatedAt": "2021-07-15T15:34:34.536Z"
+  }
+]
