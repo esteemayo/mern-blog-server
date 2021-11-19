@@ -43,15 +43,6 @@ postSchema.pre('save', async function (next) {
   }
 });
 
-postSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'author',
-    select: 'name username email photo gravatar',
-  });
-
-  next();
-});
-
 const Post = mongoose.model('Post', postSchema);
 
 module.exports = Post;
