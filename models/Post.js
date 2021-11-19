@@ -35,14 +35,12 @@ postSchema.pre('save', async function (next) {
 
   this.slug = slugify(this.title, { lower: true });
 
-  const slugRegEx = new RegExp(`(${this.slug})((-[0-9]*$)?)$`, 'i');
+  const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
   const postWithSlug = await this.constructor.find({ slug: slugRegEx });
 
   if (postWithSlug.length) {
     this.slug = `${this.slug}-${postWithSlug.length + 1}`;
   }
-
-  next();
 });
 
 postSchema.pre(/^find/, function (next) {

@@ -82,8 +82,6 @@ userSchema.pre('save', async function (next) {
 
   this.password = await bcrypt.hash(this.password, 12);
   this.passwordConfirm = undefined;
-
-  next();
 });
 
 userSchema.pre('save', function (next) {
@@ -116,10 +114,9 @@ userSchema.methods.generateAuthToken = function () {
 };
 
 userSchema.methods.correctPassword = async function (
-  candidatePassword,
-  userPassword
+  candidatePassword
 ) {
-  return await bcrypt.compare(candidatePassword, userPassword);
+  return await bcrypt.compare(candidatePassword, this.password);
 };
 
 userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {

@@ -12,10 +12,10 @@ router
 
 router
   .route('/:id')
-  .get(postController.getPost)
+  .get(postController.getPostById)
   .patch(authController.protect, postController.updatePost)
   .delete(authController.protect, postController.deletePost);
 
-router.get('/details/:slug', postController.getPostWithSlug);
+router.get('/details/:slug', postController.getPostBySlug);
 
 module.exports = router;

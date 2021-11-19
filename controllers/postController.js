@@ -1,7 +1,10 @@
+const { StatusCodes } = require('http-status-codes');
+
 const Post = require('../models/Post');
-const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const APIFeatures = require('../utils/apiFeatures');
+const NotFoundError = require('../errors/notFound');
+const ForbiddenError = require('../errors/forbidden');
 
 exports.getAllPosts = catchAsync(async (req, res, next) => {
   const features = new APIFeatures(Post.find(), req.query)
@@ -12,7 +15,7 @@ exports.getAllPosts = catchAsync(async (req, res, next) => {
 
   const posts = await features.query;
 
-  res.status(200).json({
+  res.status(StatusCodes.OK).json({
     status: 'success',
     results: posts.length,
     requestedAt: req.requestTime,
@@ -20,27 +23,27 @@ exports.getAllPosts = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getPost = catchAsync(async (req, res, next) => {
+exports.getPostById = catchAsync(async (req, res, next) => {
   const post = await Post.findById(req.params.id);
 
   if (!post) {
-    return next(new AppError('No post found with that ID', 400));
+    return next(new NotFoundError('No post found with that ID'));
   }
 
-  res.status(200).json({
+  res.status(StatusCodes.OK).json({
     status: 'success',
     post,
   });
 });
 
-exports.getPostWithSlug = catchAsync(async (req, res, next) => {
+exports.getPostBySlug = catchAsync(async (req, res, next) => {
   const post = await Post.findOne({ slug: req.params.slug });
 
   if (!post) {
-    return next(new AppError('No post found with that ID', 400));
+    return next(new NotFoundError('No post found with that ID'));
   }
 
-  res.status(200).json({
+  res.status(StatusCodes.OK).json({
     status: 'success',
     post,
   });
@@ -48,9 +51,9 @@ exports.getPostWithSlug = catchAsync(async (req, res, next) => {
 
 exports.createPost = catchAsync(async (req, res, next) => {
   if (!req.body.username) req.body.username = req.user.username;
-  const post = await Post.create(req.body);
+  const post = await Post.create({ ...req.body });
 
-  res.status(201).json({
+  res.status(StatusCodes.CREATED).json({
     status: 'success',
     data: {
       post,
@@ -62,7 +65,7 @@ exports.updatePost = catchAsync(async (req, res, next) => {
   const post = await Post.findById(req.params.id);
 
   if (!post) {
-    return next(new AppError('No post found with that ID', 404));
+    return next(new NotFoundError('No post found with that ID'));
   }
 
   if (post.username === req.user.username) {
@@ -71,7 +74,7 @@ exports.updatePost = catchAsync(async (req, res, next) => {
       runValidators: true,
     });
 
-    return res.status(200).json({
+    return res.status(StatusCodes.OK).json({
       status: 'success',
       data: {
         updatedPost,
@@ -79,24 +82,24 @@ exports.updatePost = catchAsync(async (req, res, next) => {
     });
   }
 
-  return next(new AppError('You can only update your post', 401));
+  return next(new ForbiddenError('You can only update your post'));
 });
 
 exports.deletePost = catchAsync(async (req, res, next) => {
   const post = await Post.findById(req.params.id);
 
   if (!post) {
-    return next(new AppError('No post found with that ID', 404));
+    return next(new NotFoundError('No post found with that ID'));
   }
 
   if (post.username === req.user.username) {
     await Post.findByIdAndDelete(req.params.id);
 
-    return res.status(204).json({
+    return res.status(StatusCodes.NO_CONTENT).json({
       status: 'success',
       data: null,
     });
   }
 
-  return next(new AppError('You can only delete your post', 401));
+  return next(new ForbiddenError('You can only delete your post'));
 });

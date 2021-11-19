@@ -14,7 +14,8 @@ const mongoSanitize = require('express-mongo-sanitize');
 // routes
 const globalErrorHandler = require('./controllers/errorController');
 const categoryRoute = require('./routes/categories');
-const AppError = require('./utils/appError');
+const BadRequestError = require('./errors/badRequest');
+const NotFoundError = require('./errors/notFound');
 const userRoute = require('./routes/users');
 const postRoute = require('./routes/posts');
 
@@ -91,7 +92,7 @@ const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image')) {
     return cb(null, true);
   }
-  return cb(new AppError('Not an image! Please upload only images', 400), false);
+  return cb(new BadRequestError('Not an image! Please upload only images'), false);
 };
 
 const upload = multer({
@@ -106,12 +107,13 @@ app.post('/api/v1/upload', upload.single('file'), (req, res, next) => {
   });
 });
 
+// api routes
 app.use('/api/v1/users', userRoute);
 app.use('/api/v1/posts', postRoute);
 app.use('/api/v1/categories', categoryRoute);
 
 app.all('*', (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
+  next(new NotFoundError(`Can't find ${req.originalUrl} on this server`));
 });
 
 app.use(globalErrorHandler);

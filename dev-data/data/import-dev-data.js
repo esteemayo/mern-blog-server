@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const fs = require('fs');
+require('colors');
 
 // models
 const Post = require('../../models/Post');
@@ -20,15 +21,9 @@ const db = process.env.DATABASE.replace(
 
 // mongoDB connection
 mongoose
-  .connect(db, {
-    // .connect(dbLocal, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  })
-  .then(() => console.log(`Connected to MongoDB → ${db}`));
-// .then(() => console.log(`Connected to MongoDB → ${dbLocal}`));
+  .connect(db)
+  .then(() => console.log(`Connected to MongoDB → ${db}`.blue.bold))
+  .catch((err) => console.log(`Could not connect to MongoDB → ${err}`.red.bold));
 
 // read JSON file
 const posts = JSON.parse(fs.readFileSync(`${__dirname}/posts.json`, 'utf-8'));
@@ -43,10 +38,12 @@ const importData = async () => {
     await Post.create(posts);
     await Category.create(categories);
     await User.create(users, { validateBeforeSave: false });
-
-    console.log('👍👍👍👍👍👍 Data successfully loaded! 👍👍👍👍👍👍');
+    console.log('👍👍👍👍👍👍 Data successfully loaded! 👍👍👍👍👍👍'.blue.bold);
     process.exit();
   } catch (err) {
+    console.log(
+      '\n👎👎👎👎👎👎👎👎 Error! The Error info is below but if you are importing sample data make sure to drop the existing database first with.\n\n\t npm run blowitallaway\n\n\n'.red.bold
+    );
     console.error(err);
     process.exit();
   }
@@ -55,20 +52,15 @@ const importData = async () => {
 // delete all data from DB
 const deleteData = async () => {
   try {
-    console.log('😢😢 Goodbye Data...');
-
+    console.log('😢😢 Goodbye Data...'.blue.bold);
     await Post.deleteMany();
     await User.deleteMany();
     await Category.deleteMany();
-
     console.log(
-      'Data successfully deleted! To load sample data, run\n\n\t npm run sample\n\n'
+      'Data successfully deleted! To load sample data, run\n\n\t npm run sample\n\n'.green.bold
     );
     process.exit();
   } catch (err) {
-    console.log(
-      '\n👎👎👎👎👎👎👎👎 Error! The Error info is below but if you are importing sample data make sure to drop the existing database first with.\n\n\t npm run blowitallaway\n\n\n'
-    );
     console.error(err);
     process.exit();
   }
