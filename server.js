@@ -1,4 +1,4 @@
-require('colors');
+import 'colors';
 
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION! 🔥 Shutting down.....'.red.bold);
