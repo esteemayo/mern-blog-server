@@ -15,12 +15,12 @@ import dotenv from 'dotenv';
 dotenv.config({ path: './config.env' });
 
 // routes
-const globalErrorHandler = require('./controllers/errorController');
-const categoryRoute = require('./routes/categories');
-const BadRequestError = require('./errors/badRequest');
-const NotFoundError = require('./errors/notFound');
-const userRoute = require('./routes/users');
-const postRoute = require('./routes/posts');
+import globalErrorHandler from './controllers/errorController.js';
+import categoryRoute from './routes/categories.js';
+import BadRequestError from './errors/badRequest.js';
+import NotFoundError from './errors/notFound.js';
+import userRoute from './routes/users.js';
+import postRoute from './routes/posts.js';
 
 // start express app
 const app = express();
