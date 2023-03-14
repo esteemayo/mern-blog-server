@@ -15,9 +15,10 @@ const connectDB = require('./config/db');
 
 app.set('port', process.env.PORT || 8080);
 
-const server = app.listen(app.get('port'), () =>
+const server = app.listen(app.get('port'), async () => {
+  await connectDB();
   console.log(`Server running at port → ${server.address().port}`.blue.bold)
-);
+});
 
 process.on('unhandledRejection', (err) => {
   console.log('UNHANDLED REJECTION! 🔥 Shutting down.....'.red.bold);
