@@ -6,8 +6,8 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-const app = require('./app');
-const connectDB = require('./config/db');
+import app from './app.js';
+import connectDB from './config/db.js';
 
 app.set('port', process.env.PORT || 8080);
 
