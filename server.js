@@ -11,11 +11,6 @@ process.on('uncaughtException', (err) => {
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
-// mongoDB connection
-mongoose
-  .connect(db)
-  .then(() => console.log(`Connected to MongoDB → ${db}`.gray.bold));
-
 app.set('port', process.env.PORT || 8080);
 
 const server = app.listen(app.get('port'), () =>
