@@ -1,4 +1,3 @@
-const dotenv = require('dotenv');
 require('colors');
 
 process.on('uncaughtException', (err) => {
