@@ -32,7 +32,7 @@ const createSendToken = (users, statusCode, res) => {
   });
 };
 
-exports.updateMe = catchAsync(async (req, res, next) => {
+export const updateMe = catchAsync(async (req, res, next) => {
   const { password, passwordConfirm } = req.body;
 
   if (password || passwordConfirm) {
@@ -54,7 +54,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   createSendToken(user, StatusCodes.OK, res);
 });
 
-exports.deleteMe = catchAsync(async (req, res, next) => {
+export const deleteMe = catchAsync(async (req, res, next) => {
   const user = await User.findByIdAndUpdate(req.user._id, { active: false });
   await Post.deleteMany({ username: user.username });
 
@@ -64,12 +64,12 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getMe = (req, res, next) => {
+export const getMe = (req, res, next) => {
   req.params.id = req.user.id;
   next();
 };
 
-exports.createUser = (req, res, next) => {
+export const createUser = (req, res, next) => {
   res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
     status: 'fail',
     message: `This route is not defined! Please use ${req.protocol}://${req.get(
@@ -78,7 +78,7 @@ exports.createUser = (req, res, next) => {
   });
 };
 
-exports.getAllUser = factory.getAll(User);
-exports.getUser = factory.getOneById(User);
-exports.updateUser = factory.updateOne(User);
-exports.deleteUser = factory.deleteOne(User);
+export const getAllUser = factory.getAll(User);
+export const getUser = factory.getOneById(User);
+export const updateUser = factory.updateOne(User);
+export const deleteUser = factory.deleteOne(User);
