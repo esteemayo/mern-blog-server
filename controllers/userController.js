@@ -1,11 +1,11 @@
 import _ from 'lodash';
 import { StatusCodes } from 'http-status-codes';
 
-const User = require('../models/User');
-const Post = require('../models/Post');
-const factory = require('./handlerFactory');
-const catchAsync = require('../utils/catchAsync');
-const BadRequestError = require('../errors/badRequest');
+import User from '../models/User.js';
+import Post from '../models/Post.js';
+import factory from './handlerFactory.js';
+import catchAsync from '../utils/catchAsync.js';
+import BadRequestError from '../errors/badRequest.js';
 
 const createSendToken = (users, statusCode, res) => {
   const token = users.generateAuthToken();
