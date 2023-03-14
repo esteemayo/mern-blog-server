@@ -10,6 +10,9 @@ const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const rateLimit = require('express-rate-limit');
 const mongoSanitize = require('express-mongo-sanitize');
+const dotenv = require('dotenv');
+
+dotenv.config({ path: './config.env' });
 
 // routes
 const globalErrorHandler = require('./controllers/errorController');
