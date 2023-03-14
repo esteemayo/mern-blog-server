@@ -1,5 +1,5 @@
-const _ = require('lodash');
-const { StatusCodes } = require('http-status-codes');
+import _ from 'lodash';
+import { StatusCodes } from 'http-status-codes';
 
 const User = require('../models/User');
 const Post = require('../models/Post');
