@@ -20,4 +20,8 @@ const connectDB = async () => {
   }
 };
 
+mongoose.connection.on('disconnect', () => {
+  console.log('MongoDB disconnected');
+});
+
 module.exports = connectDB;
