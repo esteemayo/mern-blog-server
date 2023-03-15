@@ -1,5 +1,5 @@
-const factory = require('./handlerFactory');
-const Category = require('../models/Category');
+import factory from './handlerFactory.js';
+import Category from '../models/Category.js';
 
 exports.getAllCategory = factory.getAll(Category);
 exports.getCategory = factory.getOneById(Category);
