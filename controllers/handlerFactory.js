@@ -89,7 +89,9 @@ export const updateOne = (Model) =>
 
 export const deleteOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.findByIdAndDelete(req.params.id);
+    const { id: docId } = req.params.id;
+
+    const doc = await Model.findByIdAndDelete(docId);
 
     if (!doc) {
       return next(new NotFoundError('No document found with that ID'));
