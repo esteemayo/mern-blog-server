@@ -4,7 +4,7 @@ import catchAsync from '../utils/catchAsync.js';
 import APIFeatures from '../utils/apiFeatures.js';
 import NotFoundError from '../errors/notFound.js';
 
-exports.getAll = (Model) =>
+export const getAll = (Model) =>
   catchAsync(async (req, res, next) => {
     const features = new APIFeatures(Model.find(), req.query)
       .filter()
@@ -23,7 +23,7 @@ exports.getAll = (Model) =>
     });
   });
 
-exports.getOneById = (Model) =>
+export const getOneById = (Model) =>
   catchAsync(async (req, res, next) => {
     const doc = await Model.findById(req.params.id);
 
@@ -39,7 +39,7 @@ exports.getOneById = (Model) =>
     });
   });
 
-exports.getOneBySlug = (Model) =>
+export const getOneBySlug = (Model) =>
   catchAsync(async (req, res, next) => {
     const doc = await Model.findOne({ slug: req.params.slug });
 
@@ -55,7 +55,7 @@ exports.getOneBySlug = (Model) =>
     });
   });
 
-exports.createOne = (Model) =>
+export const createOne = (Model) =>
   catchAsync(async (req, res, next) => {
     const doc = await Model.create({ ...req.body });
 
@@ -67,7 +67,7 @@ exports.createOne = (Model) =>
     });
   });
 
-exports.updateOne = (Model) =>
+export const updateOne = (Model) =>
   catchAsync(async (req, res, next) => {
     const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -86,7 +86,7 @@ exports.updateOne = (Model) =>
     });
   });
 
-exports.deleteOne = (Model) =>
+export const deleteOne = (Model) =>
   catchAsync(async (req, res, next) => {
     const doc = await Model.findByIdAndDelete(req.params.id);
 
