@@ -10,6 +10,7 @@ import sendMail from '../utils/sendMail.js';
 import ForbiddenError from '../errors/forbidden.js';
 import NotFoundError from '../errors/notFound.js';
 import CustomAppError from '../errors/customAppError.js';
+import BadRequestError from '../errors/badRequest.js';
 import UnauthenticatedError from '../errors/unauthenticated.js';
 
 const createSendToken = (users, statusCode, res) => {
