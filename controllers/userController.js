@@ -6,6 +6,7 @@ import * as factory from './handlerFactory.js';
 import Post from '../models/Post.js';
 import BadRequestError from '../errors/badRequest.js';
 import catchAsync from '../utils/catchAsync.js';
+import createSendToken from '../utils/createSendToken.js';
 
 
 export const updateMe = catchAsync(async (req, res, next) => {
