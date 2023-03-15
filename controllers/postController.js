@@ -1,4 +1,4 @@
-const { StatusCodes } = require('http-status-codes');
+import { StatusCodes } from 'http-status-codes';
 
 const Post = require('../models/Post');
 const catchAsync = require('../utils/catchAsync');
