@@ -19,7 +19,9 @@ export const signup = catchAsync(async (req, res, next) => {
 
   const user = await User.create({ ...userData });
 
-  createSendToken(user, StatusCodes.CREATED, req, res);
+  if (user) {
+    createSendToken(user, StatusCodes.CREATED, req, res);
+  }
 });
 
 export const login = catchAsync(async (req, res, next) => {
