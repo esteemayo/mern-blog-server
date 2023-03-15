@@ -6,7 +6,7 @@ import APIFeatures from '../utils/apiFeatures.js';
 import NotFoundError from '../errors/notFound.js';
 import ForbiddenError from '../errors/forbidden.js';
 
-exports.getAllPosts = catchAsync(async (req, res, next) => {
+export const getAllPosts = catchAsync(async (req, res, next) => {
   const features = new APIFeatures(Post.find(), req.query)
     .filter()
     .sort()
@@ -23,7 +23,7 @@ exports.getAllPosts = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getPostById = catchAsync(async (req, res, next) => {
+export const getPostById = catchAsync(async (req, res, next) => {
   const post = await Post.findById(req.params.id);
 
   if (!post) {
@@ -36,7 +36,7 @@ exports.getPostById = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getPostBySlug = catchAsync(async (req, res, next) => {
+export const getPostBySlug = catchAsync(async (req, res, next) => {
   const post = await Post.findOne({ slug: req.params.slug });
 
   if (!post) {
@@ -49,7 +49,7 @@ exports.getPostBySlug = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.createPost = catchAsync(async (req, res, next) => {
+export const createPost = catchAsync(async (req, res, next) => {
   if (!req.body.username) req.body.username = req.user.username;
   const post = await Post.create({ ...req.body });
 
@@ -61,7 +61,7 @@ exports.createPost = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.updatePost = catchAsync(async (req, res, next) => {
+export const updatePost = catchAsync(async (req, res, next) => {
   const post = await Post.findById(req.params.id);
 
   if (!post) {
@@ -85,7 +85,7 @@ exports.updatePost = catchAsync(async (req, res, next) => {
   return next(new ForbiddenError('You can only update your post'));
 });
 
-exports.deletePost = catchAsync(async (req, res, next) => {
+export const deletePost = catchAsync(async (req, res, next) => {
   const post = await Post.findById(req.params.id);
 
   if (!post) {
