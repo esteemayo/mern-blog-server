@@ -30,7 +30,9 @@ export const getOneById = (Model) =>
     const doc = await Model.findById(docId);
 
     if (!doc) {
-      return next(new NotFoundError(`No document found with that ID → ${docId}`));
+      return next(
+        new NotFoundError(`No document found with that ID → ${docId}`)
+      );
     }
 
     res.status(StatusCodes.OK).json({
@@ -46,7 +48,9 @@ export const getOneBySlug = (Model) =>
     const doc = await Model.findOne({ slug });
 
     if (!doc) {
-      return next(new NotFoundError(`No document found with that SLUG → ${slug}`));
+      return next(
+        new NotFoundError(`No document found with that SLUG → ${slug}`)
+      );
     }
 
     res.status(StatusCodes.OK).json({
@@ -78,7 +82,9 @@ export const updateOne = (Model) =>
       });
 
     if (!doc) {
-      return next(new NotFoundError(`No document found with that ID → ${docId}`));
+      return next(
+        new NotFoundError(`No document found with that ID → ${docId}`)
+      );
     }
 
     return res.status(StatusCodes.OK).json({
@@ -94,7 +100,9 @@ export const deleteOne = (Model) =>
     const doc = await Model.findByIdAndDelete(docId);
 
     if (!doc) {
-      return next(new NotFoundError(`No document found with that ID → ${docId}`));
+      return next(
+        new NotFoundError(`No document found with that ID → ${docId}`)
+      );
     }
 
     return res.status(StatusCodes.NO_CONTENT).json({
