@@ -2,7 +2,6 @@ import _ from 'lodash';
 import { StatusCodes } from 'http-status-codes';
 
 import User from '../models/User.js';
-import Post from '../models/Post.js';
 import factory from './handlerFactory.js';
 import Post from '../models/Post.js';
 import BadRequestError from '../errors/badRequest.js';
