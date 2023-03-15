@@ -11,20 +11,8 @@ import connectDB from '../../config/db.js';
 
 dotenv.config({ path: './config.env' });
 
-// db local
-const dbLocal = process.env.DATABASE_LOCAL;
-
-// db atlas
-const db = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD
-);
-
 // mongoDB connection
-mongoose
-  .connect(db)
-  .then(() => console.log(`Connected to MongoDB → ${db}`.blue.bold))
-  .catch((err) => console.log(`Could not connect to MongoDB → ${err}`.red.bold));
+connectDB();
 
 // read JSON file
 const posts = JSON.parse(fs.readFileSync(`${__dirname}/posts.json`, 'utf-8'));
