@@ -65,7 +65,6 @@ export const createPost = catchAsync(async (req, res, next) => {
   res.status(StatusCodes.CREATED).json({
     status: 'success',
     post,
-    },
   });
 });
 
