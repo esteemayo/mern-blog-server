@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import Post from '../models/Post.js';
 import catchAsync from '../utils/catchAsync.js';
 import APIFeatures from '../utils/apiFeatures.js';
-import NotFoundError from '../errors/notFound.js';
+import catchAsync from '../utils/catchAsync.js';
 import ForbiddenError from '../errors/forbidden.js';
 import NotFoundError from '../errors/notFound.js';
 
