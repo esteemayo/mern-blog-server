@@ -1,8 +1,8 @@
 import { StatusCodes } from 'http-status-codes';
 
-const catchAsync = require('../utils/catchAsync');
-const APIFeatures = require('../utils/apiFeatures');
-const NotFoundError = require('../errors/notFound');
+import catchAsync from '../utils/catchAsync.js';
+import APIFeatures from '../utils/apiFeatures.js';
+import NotFoundError from '../errors/notFound.js';
 
 exports.getAll = (Model) =>
   catchAsync(async (req, res, next) => {
