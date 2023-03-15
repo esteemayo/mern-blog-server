@@ -1,8 +1,8 @@
-const _ = require('lodash');
-const crypto = require('crypto');
-const jwt = require('jsonwebtoken');
-const { promisify } = require('util');
-const { StatusCodes } = require('http-status-codes');
+import _ from 'lodash';
+import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
+import { promisify } from 'util';
+import { StatusCodes } from 'http-status-codes';
 
 const User = require('../models/User');
 const sendMail = require('../utils/sendMail');
