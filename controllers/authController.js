@@ -180,14 +180,16 @@ export const resetPassword = catchAsync(async (req, res, next) => {
 });
 
 export const updatePassword = catchAsync(async (req, res, next) => {
+  const { password, passwordConfirm, passwordCurrent } = req.body;
+
   const user = await User.findById(req.user._id).select('+password');
 
-  if (!(await user.correctPassword(req.body.passwordCurrent))) {
+  if (!(await user.correctPassword(passwordCurrent))) {
     return next(new UnauthenticatedError('Your current password is wrong.'));
   }
 
-  user.password = req.body.password;
-  user.passwordConfirm = req.body.passwordConfirm;
+  user.password = password;
+  user.passwordConfirm = passwordConfirm;
   await user.save();
 
   createSendToken(user, StatusCodes.OK, res);
