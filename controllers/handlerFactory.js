@@ -41,7 +41,9 @@ export const getOneById = (Model) =>
 
 export const getOneBySlug = (Model) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.findOne({ slug: req.params.slug });
+    const { slug } = req.params.slug;
+
+    const doc = await Model.findOne({ slug });
 
     if (!doc) {
       return next(new NotFoundError('No document found with that SLUG'));
