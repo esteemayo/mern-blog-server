@@ -1,6 +1,5 @@
 import Category from '../models/Category.js';
 import * as factory from './handlerFactory.js';
-import Category from '../models/Category.js';
 
 export const getAllCategory = factory.getAll(Category);
 export const getCategory = factory.getOneById(Category);
