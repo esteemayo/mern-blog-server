@@ -7,30 +7,6 @@ import Post from '../models/Post.js';
 import BadRequestError from '../errors/badRequest.js';
 import catchAsync from '../utils/catchAsync.js';
 
-const createSendToken = (users, statusCode, res) => {
-  const token = users.generateAuthToken();
-
-  const cookieOptions = {
-    expires: new Date(
-      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
-    ),
-    httpOnly: true,
-  };
-
-  if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
-
-  res.cookie('jwt', token, cookieOptions);
-
-  const { password, ...user } = users._doc;
-
-  res.status(statusCode).json({
-    status: 'success',
-    token,
-    data: {
-      user,
-    },
-  });
-};
 
 export const updateMe = catchAsync(async (req, res, next) => {
   const { password, passwordConfirm } = req.body;
