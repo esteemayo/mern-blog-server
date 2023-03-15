@@ -57,9 +57,7 @@ export const createOne = (Model) =>
 
     res.status(StatusCodes.CREATED).json({
       status: 'success',
-      data: {
-        doc,
-      },
+      doc,
     });
   });
 
