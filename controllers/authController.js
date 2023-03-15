@@ -3,6 +3,7 @@ import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import { StatusCodes } from 'http-status-codes';
+import { promisify } from 'util';
 
 import User from '../models/User.js';
 import catchAsync from '../utils/catchAsync.js';
