@@ -9,13 +9,13 @@ const router = express.Router();
 router
   .route('/')
   .get(postController.getAllPosts)
-  .post(authController.protect, postController.createPost);
+  .post(authMiddleware.protect, postController.createPost);
 
 router
   .route('/:id')
   .get(postController.getPostById)
-  .patch(authController.protect, postController.updatePost)
-  .delete(authController.protect, postController.deletePost);
+  .patch(authMiddleware.protect, postController.updatePost)
+  .delete(authMiddleware.protect, postController.deletePost);
 
 router.get('/details/:slug', postController.getPostBySlug);
 
