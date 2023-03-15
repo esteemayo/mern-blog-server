@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 
 const authController = require('../controllers/authController');
 const userController = require('../controllers/userController');
