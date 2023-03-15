@@ -19,7 +19,7 @@ export const signup = catchAsync(async (req, res, next) => {
 
   const user = await User.create({ ...userData });
 
-  createSendToken(user, StatusCodes.CREATED, res);
+  createSendToken(user, StatusCodes.CREATED, req, res);
 });
 
 export const login = catchAsync(async (req, res, next) => {
@@ -35,7 +35,7 @@ export const login = catchAsync(async (req, res, next) => {
     return next(new UnauthenticatedError('Incorrect email or password'));
   }
 
-  createSendToken(user, StatusCodes.OK, res);
+  createSendToken(user, StatusCodes.OK, req, res);
 });
 
 export const protect = catchAsync(async (req, res, next) => {
@@ -163,7 +163,7 @@ export const resetPassword = catchAsync(async (req, res, next) => {
   user.passwordResetExpires = undefined;
   await user.save();
 
-  createSendToken(user, StatusCodes.OK, res);
+  createSendToken(user, StatusCodes.OK, req, res);
 });
 
 export const updatePassword = catchAsync(async (req, res, next) => {
