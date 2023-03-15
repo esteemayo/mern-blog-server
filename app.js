@@ -1,5 +1,6 @@
 import express from 'express';
 import hpp from 'hpp';
+import multer from 'multer';
 import cors from 'cors';
 import path from 'path';
 import logger from 'morgan';
