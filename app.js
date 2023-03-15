@@ -15,6 +15,7 @@ import dotenv from 'dotenv';
 dotenv.config({ path: './config.env' });
 
 // routes
+import categoryRoute from './routes/categories.js';
 import globalErrorHandler from './controllers/errorController.js';
 import categoryRoute from './routes/categories.js';
 import BadRequestError from './errors/badRequest.js';
