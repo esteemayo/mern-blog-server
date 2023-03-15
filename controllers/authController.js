@@ -38,7 +38,7 @@ const createSendToken = (users, statusCode, res) => {
   });
 };
 
-exports.signup = catchAsync(async (req, res, next) => {
+export const signup = catchAsync(async (req, res, next) => {
   const userData = _.pick(req.body, ['name', 'role', 'email', 'username', 'password', 'passwordConfirm', 'passwordChangedAt']);
 
   const user = await User.create({ ...userData });
@@ -46,7 +46,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   createSendToken(user, StatusCodes.CREATED, res);
 });
 
-exports.login = catchAsync(async (req, res, next) => {
+export const login = catchAsync(async (req, res, next) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -62,7 +62,7 @@ exports.login = catchAsync(async (req, res, next) => {
   createSendToken(user, StatusCodes.OK, res);
 });
 
-exports.protect = catchAsync(async (req, res, next) => {
+export const protect = catchAsync(async (req, res, next) => {
   let token;
   const authHeader = req.headers.authorization;
 
@@ -97,7 +97,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   next();
 });
 
-exports.restrictTo = (...roles) => {
+export const restrictTo = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
       return next(
@@ -109,7 +109,7 @@ exports.restrictTo = (...roles) => {
   };
 };
 
-exports.forgotPassword = catchAsync(async (req, res, next) => {
+export const forgotPassword = catchAsync(async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
 
   if (!user) {
@@ -166,7 +166,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   }
 });
 
-exports.resetPassword = catchAsync(async (req, res, next) => {
+export const resetPassword = catchAsync(async (req, res, next) => {
   const hashedToken = crypto
     .createHash('sha256')
     .update(req.params.token)
@@ -190,7 +190,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   createSendToken(user, StatusCodes.OK, res);
 });
 
-exports.updatePassword = catchAsync(async (req, res, next) => {
+export const updatePassword = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.user._id).select('+password');
 
   if (!(await user.correctPassword(req.body.passwordCurrent))) {
