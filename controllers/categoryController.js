@@ -1,3 +1,4 @@
+import Category from '../models/Category.js';
 import * as factory from './handlerFactory.js';
 import Category from '../models/Category.js';
 
