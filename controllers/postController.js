@@ -80,10 +80,13 @@ export const updatePost = catchAsync(async (req, res, next) => {
   }
 
   if (post.username === req.user.username) {
-    const updatedPost = await Post.findByIdAndUpdate(postId, { $set: { ...req.body } }, {
-      new: true,
-      runValidators: true,
-    });
+    const updatedPost = await Post.findByIdAndUpdate(
+      postId,
+      { $set: { ...req.body } },
+      {
+        new: true,
+        runValidators: true,
+      });
 
     return res.status(StatusCodes.OK).json({
       status: 'success',
