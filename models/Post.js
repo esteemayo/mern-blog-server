@@ -45,4 +45,4 @@ postSchema.pre('save', async function (next) {
 
 const Post = mongoose.model('Post', postSchema);
 
-module.exports = Post;
+export default Post;
