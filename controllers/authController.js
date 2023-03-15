@@ -15,7 +15,18 @@ import UnauthenticatedError from '../errors/unauthenticated.js';
 import createSendToken from '../utils/createSendToken.js';
 
 export const signup = catchAsync(async (req, res, next) => {
-  const userData = _.pick(req.body, ['name', 'role', 'email', 'username', 'password', 'passwordConfirm', 'passwordChangedAt']);
+  const userData = _.pick(
+    req.body,
+    [
+      'name',
+      'role',
+      'email',
+      'username',
+      'password',
+      'passwordConfirm',
+      'passwordChangedAt'
+    ]
+  );
 
   const user = await User.create({ ...userData });
 
