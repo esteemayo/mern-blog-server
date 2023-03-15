@@ -4,9 +4,9 @@ import fs from 'fs';
 import 'colors';
 
 // models
-const Post = require('../../models/Post');
-const User = require('../../models/User');
-const Category = require('../../models/Category');
+import Post from '../../models/Post.js';
+import User from '../../models/User.js';
+import Category from '../../models/Category.js';
 
 dotenv.config({ path: './config.env' });
 
