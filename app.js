@@ -2,7 +2,7 @@ import express from 'express';
 import hpp from 'hpp';
 import multer from 'multer';
 import cors from 'cors';
-import path from 'path';
+import compression from 'compression';
 import logger from 'morgan';
 import multer from 'multer';
 import helmet from 'helmet';
