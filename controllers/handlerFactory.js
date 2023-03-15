@@ -74,9 +74,7 @@ export const updateOne = (Model) =>
 
     return res.status(StatusCodes.OK).json({
       status: 'success',
-      data: {
-        doc,
-      },
+      doc,
     });
   });
 
