@@ -4,7 +4,7 @@ import multer from 'multer';
 import cors from 'cors';
 import compression from 'compression';
 import logger from 'morgan';
-import multer from 'multer';
+import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import xss from 'xss-clean';
 import express from 'express';
