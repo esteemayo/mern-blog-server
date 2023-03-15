@@ -24,6 +24,9 @@ import BadRequestError from './errors/badRequest.js';
 import postRoute from './routes/posts.js';
 import NotFoundError from './errors/notFound.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // start express app
 const app = express();
 
