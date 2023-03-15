@@ -8,6 +8,7 @@ import sendMail from '../utils/sendMail.js';
 import CustomAppError from '../errors/customAppError.js';
 import NotFoundError from '../errors/notFound.js';
 import UnauthenticatedError from '../errors/unauthenticated.js';
+import BadRequestError from '../errors/badRequest.js';
 import createSendToken from '../utils/createSendToken.js';
 
 export const signup = catchAsync(async (req, res, next) => {
