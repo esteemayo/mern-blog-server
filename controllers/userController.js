@@ -23,10 +23,13 @@ export const updateMe = catchAsync(async (req, res, next) => {
 
   const filterBody = _.pick(req.body, ['name', 'username', 'email', 'avatar']);
 
-  const user = await User.findByIdAndUpdate(req.user._id, filterBody, {
-    new: true,
-    runValidators: true,
-  });
+  const user = await User.findByIdAndUpdate(
+    req.user._id,
+    { $set: { filterBody } },
+    {
+      new: true,
+      runValidators: true,
+    });
 
   createSendToken(user, StatusCodes.OK, req, res);
 });
