@@ -91,7 +91,6 @@ export const updatePost = catchAsync(async (req, res, next) => {
     return res.status(StatusCodes.OK).json({
       status: 'success',
       updatedPost,
-      },
     });
   }
 
