@@ -1,7 +1,5 @@
 import bcrypt from 'bcryptjs';
 import md5 from 'md5';
-import crypto from 'crypto';
-import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import validator from 'validator';
