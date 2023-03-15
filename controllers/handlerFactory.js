@@ -47,9 +47,7 @@ export const getOneBySlug = (Model) =>
 
     res.status(StatusCodes.OK).json({
       status: 'success',
-      data: {
-        doc,
-      },
+      doc,
     });
   });
 
