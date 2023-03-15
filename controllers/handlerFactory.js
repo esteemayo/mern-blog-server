@@ -25,7 +25,9 @@ export const getAll = (Model) =>
 
 export const getOneById = (Model) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.findById(req.params.id);
+    const { id: docId } = req.params.id;
+
+    const doc = await Model.findById(docId);
 
     if (!doc) {
       return next(new NotFoundError('No document found with that ID'));
