@@ -5,7 +5,7 @@ const categorySchema = new mongoose.Schema(
     name: {
       type: String,
       unique: true,
-      required: [true, 'A category must have a name.'],
+      required: [true, 'A category must have a name'],
     },
   },
   {
