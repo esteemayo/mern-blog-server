@@ -3,7 +3,7 @@ import md5 from 'md5';
 import crypto from 'crypto';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import mongoose from 'mongoose';
+import crypto from 'crypto';
 import validator from 'validator';
 
 const userSchema = new mongoose.Schema(
