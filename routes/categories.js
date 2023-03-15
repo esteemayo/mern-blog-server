@@ -1,7 +1,7 @@
 import express from 'express';
 
-const categoryController = require('../controllers/categoryController');
-const authController = require('../controllers/authController');
+import categoryController from '../controllers/categoryController.js';
+import authController from '../controllers/authController.js';
 
 const router = express.Router();
 
