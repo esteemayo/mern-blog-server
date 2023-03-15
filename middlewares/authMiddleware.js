@@ -5,7 +5,6 @@ import User from '../models/User.js';
 import ForbiddenError from '../errors/forbidden.js';
 import catchAsync from '../utils/catchAsync.js';
 import UnauthenticatedError from '../errors/unauthenticated.js';
-import catchAsync from '../utils/catchAsync.js';
 
 export const protect = catchAsync(async (req, res, next) => {
   let token;
