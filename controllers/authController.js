@@ -4,14 +4,14 @@ import jwt from 'jsonwebtoken';
 import { promisify } from 'util';
 import { StatusCodes } from 'http-status-codes';
 
-const User = require('../models/User');
-const sendMail = require('../utils/sendMail');
-const catchAsync = require('../utils/catchAsync');
-const NotFoundError = require('../errors/notFound');
-const ForbiddenError = require('../errors/forbidden');
-const BadRequestError = require('../errors/badRequest');
-const CustomAppError = require('../errors/customAppError');
-const UnauthenticatedError = require('../errors/unauthenticated');
+import User from '../models/User.js';
+import sendMail from '../utils/sendMail.js';
+import catchAsync from '../utils/catchAsync.js';
+import NotFoundError from '../errors/notFound.js';
+import ForbiddenError from '../errors/forbidden.js';
+import BadRequestError from '../errors/badRequest.js';
+import CustomAppError from '../errors/customAppError.js';
+import UnauthenticatedError from '../errors/unauthenticated.js';
 
 const createSendToken = (users, statusCode, res) => {
   const token = users.generateAuthToken();
