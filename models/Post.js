@@ -5,20 +5,20 @@ const postSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, 'A post must have a title.'],
+      required: [true, 'A post must have a title'],
     },
     slug: String,
     description: {
       type: String,
-      required: [true, 'A post must have a description.'],
+      required: [true, 'A post must have a description'],
     },
     username: {
       type: String,
-      required: [true, 'A post must must have a username.'],
+      required: [true, 'A post must must have a username'],
     },
     category: {
       type: String,
-      required: [true, 'A post must belong to a category.'],
+      required: [true, 'A post must belong to a category'],
     },
     photo: String,
   },
