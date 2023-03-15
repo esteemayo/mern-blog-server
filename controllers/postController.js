@@ -29,7 +29,9 @@ export const getPostById = catchAsync(async (req, res, next) => {
   const post = await Post.findById(postId);
 
   if (!post) {
-    return next(new NotFoundError(`No post found with that ID → ${postId}`));
+    return next(
+      new NotFoundError(`No post found with that ID → ${postId}`)
+    );
   }
 
   res.status(StatusCodes.OK).json({
