@@ -74,7 +74,7 @@ export const updatePost = catchAsync(async (req, res, next) => {
   const post = await Post.findById(postId);
 
   if (!post) {
-    return next(new NotFoundError('No post found with that ID'));
+    return next(new NotFoundError(`No post found with that ID → ${postId}`));
   }
 
   if (post.username === req.user.username) {
