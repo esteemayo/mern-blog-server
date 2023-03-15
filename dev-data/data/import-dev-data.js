@@ -7,6 +7,7 @@ import 'colors';
 import Post from '../../models/Post.js';
 import User from '../../models/User.js';
 import Category from '../../models/Category.js';
+import connectDB from '../../config/db.js';
 
 dotenv.config({ path: './config.env' });
 
