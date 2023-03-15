@@ -36,4 +36,4 @@ router
   .patch(userController.updateMe)
   .delete(userController.deleteUser);
 
-module.exports = router;
+export default router;
