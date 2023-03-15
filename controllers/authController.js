@@ -5,7 +5,6 @@ import { promisify } from 'util';
 import { StatusCodes } from 'http-status-codes';
 
 import User from '../models/User.js';
-import sendMail from '../utils/sendMail.js';
 import catchAsync from '../utils/catchAsync.js';
 import NotFoundError from '../errors/notFound.js';
 import ForbiddenError from '../errors/forbidden.js';
