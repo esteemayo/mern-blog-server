@@ -6,6 +6,7 @@ import Post from '../models/Post.js';
 import factory from './handlerFactory.js';
 import catchAsync from '../utils/catchAsync.js';
 import BadRequestError from '../errors/badRequest.js';
+import catchAsync from '../utils/catchAsync.js';
 
 const createSendToken = (users, statusCode, res) => {
   const token = users.generateAuthToken();
