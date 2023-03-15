@@ -80,7 +80,7 @@ export const updatePost = catchAsync(async (req, res, next) => {
   }
 
   if (post.username === req.user.username) {
-    const updatedPost = await Post.findByIdAndUpdate(req.params.id, req.body, {
+    const updatedPost = await Post.findByIdAndUpdate(postId, req.body, {
       new: true,
       runValidators: true,
     });
