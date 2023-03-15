@@ -109,7 +109,7 @@ export const deletePost = catchAsync(async (req, res, next) => {
   }
 
   if (post.username === req.user.username) {
-    await Post.findByIdAndDelete(req.params.id);
+    await Post.findByIdAndDelete(postId);
 
     return res.status(StatusCodes.NO_CONTENT).json({
       status: 'success',
