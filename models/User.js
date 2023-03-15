@@ -1,3 +1,4 @@
+import bcrypt from 'bcryptjs';
 import md5 from 'md5';
 import crypto from 'crypto';
 import bcrypt from 'bcryptjs';
