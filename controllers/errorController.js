@@ -1,4 +1,4 @@
-const { StatusCodes } = require('http-status-codes');
+import { StatusCodes } from 'http-status-codes';
 
 const handleCastErrorDB = (customError, err) => {
   customError.message = `Invalid ${err.path}: ${err.value}`;
