@@ -1,3 +1,4 @@
+import slugify from 'slugify';
 import mongoose from 'mongoose';
 
 const postSchema = new mongoose.Schema(
