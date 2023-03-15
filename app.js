@@ -11,6 +11,7 @@ import rateLimit from 'express-rate-limit';
 import xss from 'xss-clean';
 import mongoSanitize from 'express-mongo-sanitize';
 import dotenv from 'dotenv';
+import path from 'path';
 
 dotenv.config({ path: './config.env' });
 
