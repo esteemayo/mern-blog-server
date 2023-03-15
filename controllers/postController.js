@@ -59,6 +59,7 @@ export const getPostBySlug = catchAsync(async (req, res, next) => {
 
 export const createPost = catchAsync(async (req, res, next) => {
   if (!req.body.username) req.body.username = req.user.username;
+
   const post = await Post.create({ ...req.body });
 
   res.status(StatusCodes.CREATED).json({
