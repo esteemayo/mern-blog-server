@@ -6,7 +6,7 @@ import User from '../models/User.js';
 import catchAsync from '../utils/catchAsync.js';
 import sendMail from '../utils/sendMail.js';
 import CustomAppError from '../errors/customAppError.js';
-import BadRequestError from '../errors/badRequest.js';
+import NotFoundError from '../errors/notFound.js';
 import UnauthenticatedError from '../errors/unauthenticated.js';
 import createSendToken from '../utils/createSendToken.js';
 
