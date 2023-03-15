@@ -46,7 +46,7 @@ export const getPostBySlug = catchAsync(async (req, res, next) => {
   const post = await Post.findOne({ slug });
 
   if (!post) {
-    return next(new NotFoundError('No post found with that ID'));
+    return next(new NotFoundError(`No post found with that SLUG → ${slug}`));
   }
 
   res.status(StatusCodes.OK).json({
