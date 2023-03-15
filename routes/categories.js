@@ -10,22 +10,22 @@ router
   .route('/')
   .get(categoryController.getAllCategory)
   .post(
-    authController.protect,
-    authController.restrictTo('admin'),
+    authMiddleware.protect,
+    authMiddleware.restrictTo('admin'),
     categoryController.createCategory
   );
 
-router.use(authController.protect);
+router.use(authMiddleware.protect);
 
 router
   .route('/:id')
   .get(categoryController.getCategory)
   .patch(
-    authController.restrictTo('admin'),
+    authMiddleware.restrictTo('admin'),
     categoryController.updateCategory
   )
   .delete(
-    authController.restrictTo('admin'),
+    authMiddleware.restrictTo('admin'),
     categoryController.deleteCategory
   );
 
