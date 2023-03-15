@@ -67,10 +67,15 @@ export const createOne = (Model) =>
 
 export const updateOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const { id: docId } = req.params.id;
+
+    const doc = await Model.findByIdAndUpdate(
+      docId,
+      { $set: { ...req.body } },
+      {
+        new: true,
+        runValidators: true,
+      });
 
     if (!doc) {
       return next(new NotFoundError('No document found with that ID'));
