@@ -54,3 +54,13 @@ export const restrictTo =
 
       next();
     };
+
+export const verifyUser = (req, res, next) => {
+  if (
+    req.params.id === req.user.id ||
+    req.user.role === 'admin'
+  ) {
+    return next();
+  }
+  return next(new ForbiddenError('You are not allowed to perform this operation'));
+};
