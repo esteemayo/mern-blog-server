@@ -28,7 +28,7 @@ export const updateMe = catchAsync(async (req, res, next) => {
     runValidators: true,
   });
 
-  createSendToken(user, StatusCodes.OK, res);
+  createSendToken(user, StatusCodes.OK, req, res);
 });
 
 export const deleteMe = catchAsync(async (req, res, next) => {
