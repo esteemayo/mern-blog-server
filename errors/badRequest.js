@@ -1,13 +1,13 @@
-const { StatusCodes } = require('http-status-codes');
-const CustomAppError = require('./customAppError');
+import { StatusCodes } from 'http-status-codes';
+import CustomAppError from './customAppError.js';
 
 class BadRequestError extends CustomAppError {
-    constructor(message) {
-        super(message);
+  constructor(message) {
+    super(message);
 
-        this.statusCode = StatusCodes.BAD_REQUEST;
-        this.status = 'fail';
-    };
+    this.statusCode = StatusCodes.BAD_REQUEST;
+    this.status = 'fail';
+  };
 };
 
-module.exports = BadRequestError;
+export default BadRequestError;
