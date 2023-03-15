@@ -18,4 +18,4 @@ router
 
 router.get('/details/:slug', postController.getPostBySlug);
 
-module.exports = router;
+export default router;
