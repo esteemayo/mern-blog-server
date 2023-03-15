@@ -4,7 +4,6 @@ import 'colors';
 
 // models
 import Post from '../../models/Post.js';
-import User from '../../models/User.js';
 import Category from '../../models/Category.js';
 import User from '../../models/User.js';
 import connectDB from '../../config/db.js';
