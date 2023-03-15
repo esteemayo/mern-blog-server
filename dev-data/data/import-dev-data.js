@@ -4,13 +4,13 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import 'colors';
 
+dotenv.config({ path: './config.env' });
+
 // models
 import Post from '../../models/Post.js';
 import Category from '../../models/Category.js';
 import User from '../../models/User.js';
 import connectDB from '../../config/db.js';
-
-dotenv.config({ path: './config.env' });
 
 // mongoDB connection
 connectDB();
