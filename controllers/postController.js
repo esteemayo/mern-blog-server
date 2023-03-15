@@ -5,6 +5,7 @@ import catchAsync from '../utils/catchAsync.js';
 import APIFeatures from '../utils/apiFeatures.js';
 import NotFoundError from '../errors/notFound.js';
 import ForbiddenError from '../errors/forbidden.js';
+import NotFoundError from '../errors/notFound.js';
 
 export const getAllPosts = catchAsync(async (req, res, next) => {
   const features = new APIFeatures(Post.find(), req.query)
