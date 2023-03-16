@@ -28,7 +28,7 @@ router.use(authMiddleware.restrictTo('admin'));
 
 router
   .route('/')
-  .get(userController.getAllUser)
+  .get(router.use(authMiddleware.restrictTo('admin')), userController.getAllUser)
   .post(userController.createUser);
 
 router
