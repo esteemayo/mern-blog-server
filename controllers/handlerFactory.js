@@ -25,7 +25,7 @@ export const getAll = (Model) =>
 
 export const getOneById = (Model) =>
   catchAsync(async (req, res, next) => {
-    const { id: docId } = req.params.id;
+    const { id: docId } = req.params;
 
     const doc = await Model.findById(docId);
 
