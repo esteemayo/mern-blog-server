@@ -71,7 +71,7 @@ export const createOne = (Model) =>
 
 export const updateOne = (Model) =>
   catchAsync(async (req, res, next) => {
-    const { id: docId } = req.params.id;
+    const { id: docId } = req.params;
 
     const doc = await Model.findByIdAndUpdate(
       docId,
