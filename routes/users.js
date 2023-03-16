@@ -24,8 +24,6 @@ router.patch('/update-me', userController.updateMe);
 
 router.delete('/delete-me', userController.deleteMe);
 
-router.use(authMiddleware.restrictTo('admin'));
-
 router
   .route('/')
   .get(authMiddleware.restrictTo('admin'), userController.getAllUser)
