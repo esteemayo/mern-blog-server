@@ -1,6 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
 
-import catchAsync from '../utils/catchAsync.js';
 import APIFeatures from '../utils/apiFeatures.js';
 import catchAsync from '../utils/catchAsync.js';
 import NotFoundError from '../errors/notFound.js';
