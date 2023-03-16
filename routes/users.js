@@ -34,7 +34,7 @@ router
 router
   .route('/:id')
   .get(userController.getUser)
-  .patch(userController.updateMe)
+  .patch(router.use(authMiddleware.restrictTo('admin')), userController.updateMe)
   .delete(userController.deleteUser);
 
 export default router;
