@@ -43,7 +43,7 @@ export const getOneById = (Model) =>
 
 export const getOneBySlug = (Model) =>
   catchAsync(async (req, res, next) => {
-    const { slug } = req.params.slug;
+    const { slug } = req.params;
 
     const doc = await Model.findOne({ slug });
 
