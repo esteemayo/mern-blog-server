@@ -39,6 +39,10 @@ app.options('*', cors());
 // set security http headers
 app.use(helmet());
 
+if (!process.env.JWT_SECRET) {
+  process.exit(1);
+}
+
 // development logging
 if (app.get('env') === 'development') {
   app.use(logger('dev'));
