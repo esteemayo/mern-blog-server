@@ -12,6 +12,7 @@ import xss from 'xss-clean';
 import mongoSanitize from 'express-mongo-sanitize';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
+import 'colors';
 
 dotenv.config({ path: './config.env' });
 
