@@ -80,6 +80,8 @@ export const updatePost = catchAsync(async (req, res, next) => {
     );
   }
 
+  if (req.body.title) req.body.slug = slugify(req.body.title, { lower: true });
+
   if (post.username === req.user.username) {
     const updatedPost = await Post.findByIdAndUpdate(
       postId,
