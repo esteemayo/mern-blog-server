@@ -8,7 +8,6 @@ import BadRequestError from '../errors/badRequest.js';
 import catchAsync from '../utils/catchAsync.js';
 import createSendToken from '../utils/createSendToken.js';
 
-
 export const updateMe = catchAsync(async (req, res, next) => {
   const { password, passwordConfirm } = req.body;
 
